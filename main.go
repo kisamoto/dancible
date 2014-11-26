@@ -13,11 +13,13 @@ import (
 const (
 	ubuntu = "ubuntu"
 	centos = "centos"
+    debian = "debian"
 
 	outputFile = "Dockerfile"
 
 	ubuntuTemplate = "UbuntuDockerfile.template"
 	centosTemplate = "CentOSDockerfile.template"
+    debianTemplate = "DebianDockerfile.template"
 
 	flagNameBaseOS    = "os"
 	flagDefaultBaseOS = "ubuntu"
