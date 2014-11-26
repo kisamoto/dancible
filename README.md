@@ -21,10 +21,11 @@ Run the executable
 
     $ ./dancible -help
         Usage of ./dancible:
-            -name="": name of docker container to be produced
-            -os="ubuntu": the base operating system to use in the container (ubuntu or centos)
-            -repo="": git URL to pull an ansible playbook and configure this container
-            -version="latest": the version of the docker image to use
+          -branch="": a branch to be checked out from playbook repo containing 'site.yml'
+          -name="": name of docker container to be produced
+          -os="ubuntu": the base operating system to use in the container (ubuntu, centos, debian)
+          -repo="": git URL to pull an ansible playbook and configure this container
+          -version="latest": the version of the docker image to use
 
 The only required parameter is the repository to pull down the ansible-playbook.
 

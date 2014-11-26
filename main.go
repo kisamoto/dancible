@@ -31,7 +31,7 @@ const (
 
 	flagNameBaseOS    = "os"
 	flagDefaultBaseOS = "ubuntu"
-	flagUsageBaseOS   = "the base operating system to use in the container (ubuntu or centos)"
+	flagUsageBaseOS   = "the base operating system to use in the container (ubuntu, centos, debian)"
 
 	flagNameOSVersion    = "version"
 	flagDefaultOSVersion = "latest"
@@ -129,7 +129,6 @@ func main() {
 
 	flag.Parse()
 	verify()
-	// initialiseValues()
 
 	lbos := strings.ToLower(*baseOS)
 	osVal, ok := osVars[lbos]
