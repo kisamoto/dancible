@@ -1,0 +1,28 @@
+FROM ubuntu:{{ .OSVersion }}
+
+MAINTAINER Ewan Jones "ewan@kukrilabs.com"
+
+RUN apt-get -qq update
+RUN apt-get upgrade -y
+
+RUN apt-get install -y python-pip git
+
+RUN pip install -U pip
+RUN pip install paramiko PyYAML Jinja2 httplib2
+
+RUN git clone http://github.com/ansible/ansible.git /tmp/ansible
+
+WORKDIR /tmp/ansible
+ENV PATH /tmp/ansible/bin:/sbin:/usr/sbin:/usr/bin
+ENV ANSIBLE_LIBRARY /tmp/ansible/library
+ENV PYTHONPATH /tmp/ansible/lib:$PYTHON_PATH
+
+RUN git clone {{ .App.AnsiblePlaybookRepo }} /opt/apps/{{ .App.Name }}
+ADD hosts /etc/ansible/hosts
+
+WORKDIR /opt/apps/{{ .App.Name }}
+RUN ansible-playbook site.yml -c local
+
+EXPOSE 22 3000
+ENTRYPOINT [“/usr/bin/foo”]
+
